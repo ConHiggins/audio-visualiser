@@ -5,10 +5,19 @@ import * as THREE from "three";
 import { sphereGeometry, meshStandardMaterial } from "three";
 
 const Sphere = () => {
+    const ref = useRef();
+    useFrame((state) => {
+        ref.current.rotation.set(ref.current.rotation.x + 0.1, ref.current.rotation.y + 0.1, ref.current.rotation.z + 0.1);
+        ref.current.scale.set(
+            Math.sin(state.clock.getElapsedTime() / 1.5) / 2,
+            Math.cos(state.clock.getElapsedTime() / 1.5) / 2,
+            Math.cos(state.clock.getElapsedTime() / 1.5) / 2
+        );
+    });
     return (
-        <mesh visible userData={{ test: "here" }} position={[0, 0, 0]} castShadow>
-            <sphereGeometry attach="geometry" args={[1, 16, 16]} />
-            <meshStandardMaterial attach="material" color="white" transparent roughness={0.1} metalness={0.1} />
+        <mesh ref={ref} visible userData={{ test: "here" }} position={[0, 0, 0]} castShadow>
+            <sphereGeometry attach="geometry" args={[0.5, 32, 32]} />
+            <meshStandardMaterial attach="material" color="blue" roughness={0.5} metalness={0.1} />
         </mesh>
     );
 };

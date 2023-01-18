@@ -1,12 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { ReactDOM } from "react-dom";
 import Sphere from "./Components/Sphere/Sphere.jsx";
 import { Canvas, useFrame } from "react-three-fiber";
 
 function App() {
     return (
-        <Canvas>
+        <Canvas dpr={[1, 2]} camera={{ fov: 25 }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 5]} />
+            <pointLight position={[-10, -10, -5]} />
             <Sphere />
         </Canvas>
     );
