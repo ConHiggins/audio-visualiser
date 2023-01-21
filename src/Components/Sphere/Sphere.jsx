@@ -14,7 +14,7 @@ const Sphere = ({ currentX }) => {
             coords[i], //Math.cos(state.clock.getElapsedTime() / coords[i]) / 10,
             coords[i] //Math.cos(state.clock.getElapsedTime() / coords[i]) / 2 + 0.05
         );*/
-        ref.current.position.lerp(vecX, 0.1); /// This will watch for changes to the props in the vector and lerp accordingly
+        ref.current.position.lerp(vecX, 0.1); /// This will watch for changes to the props in the vector and then lerp accordingly
     });
     return (
         <>
